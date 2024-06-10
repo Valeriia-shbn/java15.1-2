@@ -25,7 +25,7 @@ public class Game {
     public int round(String playerName1, String playerName2) {
         Player player1 = findByName(playerName1);
         Player player2 = findByName(playerName2);
-        if (player1==null || player2==null) {
+        if (player1 == null || player2 == null) {
             throw new NotRegisteredException(
                     "One of players is not registered."
             );

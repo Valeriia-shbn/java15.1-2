@@ -16,7 +16,7 @@ class GameTest {
     Game game = new Game();
 
     @BeforeEach
-    public void setup (){
+    public void setup() {
         game.register(player1);
         game.register(player2);
     }
@@ -29,7 +29,7 @@ class GameTest {
         expected.add(player2);
         expected.add(player3);
         ArrayList<Player> actual = game.players;
-        Assertions.assertEquals (expected, actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 
@@ -40,20 +40,20 @@ class GameTest {
         expected.add(player1);
         expected.add(player2);
         ArrayList<Player> actual = game.players;
-        Assertions.assertEquals (expected, actual);
+        Assertions.assertEquals(expected, actual);
 
     }
 
     @Test
     void roundFirstShouldWin() {
-        int actual = game.round("Kolya","Petya");
+        int actual = game.round("Kolya", "Petya");
         int expected = 1;
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     void roundSecondShouldWin() {
-        int actual = game.round("Petya","Kolya");
+        int actual = game.round("Petya", "Kolya");
         int expected = 2;
         Assertions.assertEquals(expected, actual);
     }
@@ -61,7 +61,7 @@ class GameTest {
     @Test
     void roundWithNoWinner() {
         game.register(player3);
-        int actual = game.round("Petya","Lena");
+        int actual = game.round("Petya", "Lena");
         int expected = 0;
         Assertions.assertEquals(expected, actual);
     }
@@ -72,12 +72,14 @@ class GameTest {
             game.round("Vika", "Petya");
         });
     }
+
     @Test
     void roundShouldThrowExceptionForSecondPlayer() {
         Assertions.assertThrows(NotRegisteredException.class, () -> {
             game.round("Petya", "Vika");
         });
     }
+
     @Test
     void roundShouldThrowExceptionForBothPlayers() {
         Assertions.assertThrows(NotRegisteredException.class, () -> {
