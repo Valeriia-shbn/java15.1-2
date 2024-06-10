@@ -5,6 +5,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 class GameTest {
 
@@ -24,11 +25,11 @@ class GameTest {
     @Test
     void shouldRegister() {
         game.register(player3);
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        expected.add(player2);
-        expected.add(player3);
-        ArrayList<Player> actual = game.players;
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        expected.put(player2.getName(), player2);
+        expected.put(player3.getName(), player3);
+        HashMap<String, Player> actual = game.players;
         Assertions.assertEquals(expected, actual);
 
     }
@@ -36,10 +37,10 @@ class GameTest {
     @Test
     void shouldNotRegisterTwice() {
         game.register(player2);
-        ArrayList<Player> expected = new ArrayList<>();
-        expected.add(player1);
-        expected.add(player2);
-        ArrayList<Player> actual = game.players;
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        expected.put(player2.getName(), player2);
+        HashMap<String, Player> actual = game.players;
         Assertions.assertEquals(expected, actual);
 
     }
