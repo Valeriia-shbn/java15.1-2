@@ -1,15 +1,16 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
 
-    ArrayList<Player> players = new ArrayList<>();
+    HashMap<String, Player> players = new HashMap<>();
 
     public Player findByName(String name) {
-        for (Player player : players) {
-            if (player.getName().equals(name)) {
-                return player;
+        for (String playerName : players.keySet()) {
+            if (playerName.equals(name)) {
+                return players.get(playerName);
             }
         }
 
@@ -17,8 +18,8 @@ public class Game {
     }
 
     public void register(Player player) {
-        if (!players.contains(player)) {
-            players.add(player);
+        if (!players.containsValue(player)) {
+            players.put(player.getName(), player);
         }
     }
 
